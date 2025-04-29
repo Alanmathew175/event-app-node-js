@@ -24,8 +24,8 @@ const handleCall = async (name, phone) => {
         console.log(error, "error while calling");
     }
 };
-cron.schedule("* * * * *", async () => {
-    console.log("Running this task every minute");
+cron.schedule("*/5 * * * *", async () => {
+    console.log("Running this task every 5 minute");
     const users = await Users.find({ refresh_token: { $ne: null } });
     for (const user of users) {
         if (!user?.phone) {
